@@ -1,0 +1,373 @@
+/* Font Import */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* CSS Reset */
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Properties */
+
+body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    color: hsl(279, 6%, 55%);
+    background: white;
+}
+h1, h2, h3 {
+    color: white;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing: 4.5px;
+}
+h2, h3 {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+}
+
+/* Background Gradient */
+
+#background_gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 33%;
+    height: 100%;
+    background: url("img/bg-main-desktop.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* By analysing the original design, it seems that we don't need to centered the background image */
+}
+
+/* Card */
+
+#card {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+#card > div {
+    position: relative;
+    width: 447px;
+    height: 245px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box; /* I use this property to prevent card (front and back) resizing when I add padding */
+    overflow: hidden;
+}
+.light {
+    position: absolute;
+    top: 0;
+    height: 160%;
+    width: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    transform-origin: top left;
+    z-index: -1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+/* Card - Front */
+
+#front {
+    padding: 28px;
+    background: url("img/bg-card-front.png");
+    transform: translateX(-43px);
+}
+#front .light {
+    margin-top: 0;
+    left: 0;
+    transform: translate(-30px, -25px) rotate(45deg);
+}
+#front img {
+    margin-bottom: 63px;
+    user-select: none;
+    pointer-events: none;
+}
+#front div {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+}
+
+/* Card - Back */
+
+#back {
+    background: url("img/bg-card-back.png");
+    transform: translateX(43px);
+}
+#back .light {
+    right: 0;
+    transform: translate(300px, -25px) rotate(45deg);
+    animation-delay: 2.5s;
+}
+#back h3 {
+    position: absolute;
+    right: 56px;
+    top: 112px;
+}
+
+/* Form & Thank you */
+
+form, #thank_you {
+    width: 365px;
+    transition: filter 0.2s ease-out;
+}
+
+/* Form */
+
+form > div {
+    margin-bottom: 17px;
+}
+form label {
+    font-weight: 600;
+    font-size: 12px;
+    color: hsl(278, 68%, 11%);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+form input, #thank_you input {
+    margin-top: 6px;
+    padding: 10px 13px;
+    width: 100%;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: hsl(278, 68%, 11%);
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+form input::placeholder {
+    font-weight: 400;
+    color: #c4c4c6;
+}
+form input:focus {
+    outline: 1px solid hsl(278, 94%, 30%);
+}
+#row {
+    display: flex;
+    gap: 22px;
+}
+#row div {
+    width: 50%;
+}
+#row div:first-child input {    /* Month and Year inputs */
+    width: 48%;
+}
+#card_year {
+    transform: translateX(5px); /* When I add margin, there is a break so I use "transform" */
+}
+form p {
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: hsl(0, 100%, 66%);
+}
+#submit, #thank_you input {
+    margin-bottom: 0;
+    padding: 13px;
+    font-weight: 500;
+    color: white;
+    background: hsl(278, 68%, 11%);
+    border-color: hsl(278, 68%, 11%);
+    cursor: pointer;
+    transition: color 0.17s ease-out, background 0.17s ease-out;
+}
+#submit:hover, #thank_you input:hover {
+    color: hsl(278, 68%, 11%);
+    background: white;
+}
+#submit {
+    margin-top: 16px;
+}
+
+/* Thank you */
+
+#thank_you {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    filter: opacity(0%);
+}
+#thank_you img {
+    margin-bottom: 30px;
+    width: 70px;
+    user-select: none;
+    pointer-events: none;
+}
+#thank_you h1 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: hsl(278, 68%, 11%);
+}
+#thank_you input {
+    margin-top: 40px;
+}
+
+/* Keyframes */
+
+@keyframes shine_front {
+    0% {
+        transform: translate(-25px, -25px) rotate(45deg);
+    }
+    25% {
+        transform: translate(725px, -25px) rotate(45deg);
+    }
+    100% {
+        transform: translate(725px, -25px) rotate(45deg);
+    }
+}
+@keyframes shine_back {
+    0% {
+        transform: translate(300px, -25px) rotate(45deg);
+    }
+    25% {
+        transform: translate(-450px, -25px) rotate(45deg);
+    }
+    100% {
+        transform: translate(-450px, -25px) rotate(45deg);
+    }
+}
+
+/* Media Queries */
+
+@media screen and (width < 1024px) {
+    body {
+        flex-direction: column;
+    }
+    #background_gradient {
+        width: 100%;
+        height: 33%;
+        background-image: url("img/bg-main-mobile.png");
+    }
+    #card {
+        flex-direction: column-reverse;
+    }
+    #front {
+        margin-top: -120px;
+        margin-bottom: 30px;
+        z-index: 1;
+    }
+    form, #thank_you {
+        width: auto;
+    }
+    form > div:last-child {
+        margin-bottom: 0;
+    }
+}
+@media screen and (550px < width < 1024px) {
+    #card > div {
+        width: 420px;
+        height: 230px;
+    }
+    #front img {
+        margin-bottom: 55px;
+    }
+    #front h1 {
+        font-size: 25px;
+    }
+    #back h3 {
+        top: 105px;
+    }
+    #form {
+        width: 500px;
+    }
+}
+@media screen and (470px < width < 550px) {
+    #card > div {
+        width: 350px;
+        height: 192px;
+    }
+    #front img {
+        margin-bottom: 32px;
+        width: 75px;
+    }
+    #front h1 {
+        font-size: 18px;
+    }
+    #front h2, #front h3, #back h3 {
+        font-size: 11px;
+    }
+    #back h3 {
+        right: 47px;
+        top: 86px;
+    }
+    #form {
+        width: 450px;
+    }
+}
+@media screen and (width < 470px) {
+    #front h1 {
+        letter-spacing: 3px;
+    }
+}
+@media screen and (420px < width < 470px) {
+    #card > div {
+        width: 285px;
+        height: 156px;
+    }
+    #front {
+        padding: 16px;
+        margin-top: -105px;
+    }
+    #front img {
+        margin-bottom: 30px;
+        width: 60px;
+    }
+    #front h1 {
+        font-size: 17px;
+    }
+    #front h2, #front h3, #back h3 {
+        font-size: 10px;
+    }
+    #back h3 {
+        right: 38px;
+        top: 70px;
+    }
+    #form {
+        width: 375px;
+    }
+}
+@media screen and (width < 420px) {
+    #card > div {
+        width: 250px;
+        height: 137px;
+    }
+    #front {
+        padding: 14px;
+        margin-top: -95px;
+    }
+    #front img {
+        margin-bottom: 24px;
+        width: 45px;
+    }
+    #front h1 {
+        font-size: 14px;
+    }
+    #front h2, #front h3, #back h3 {
+        font-size: 9px;
+    }
+    #back h3 {
+        right: 30px;
+        top: 61px;
+    }
+    #form {
+        width: 325px;
+    }
+}
